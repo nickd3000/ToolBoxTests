@@ -6,8 +6,11 @@ public class TestToolbox {
 		//TestLookupTable testLookupTable = new TestLookupTable();
 		//testLookupTable.runPerformanceTests();
 		
-		TestBasicGraph testBasicGraph = new TestBasicGraph();
-		testBasicGraph.runTests();
+		//TestBasicGraph testBasicGraph = new TestBasicGraph();
+		//testBasicGraph.runTests();
+		
+		TestBasicDisplay testBasicDisplay = new TestBasicDisplay();
+		testBasicDisplay.runTests();
 	}
 	
 	
