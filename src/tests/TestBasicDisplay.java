@@ -7,6 +7,41 @@ import ToolBox.BasicDisplay;
 public class TestBasicDisplay {
 
 	public void runTests() {
+
+		testCard();
+		//example_colourWheel();
+
+	}
+	
+	public void example_colourWheel() {
+		BasicDisplay bd = new BasicDisplay(400, 400);
+		double angle = 0, phi=0;
+		while (true) {
+			//bd.startTimer();
+			bd.cls(Color.GRAY);
+			double a=0,r=20;
+			bd.drawFilledCircle(bd.mouseX(), bd.mouseY(), 50);
+			for (int i=0;i<20;i++) {
+				bd.setDrawColor(bd.getDistinctColor(i, 0.75f));
+				bd.drawFilledRect(i*20, 0, 20+(i*20), 20);
+			}			
+			for (int i=0;i<60;i++) {
+				phi = 0.61803398874 + (Math.sin(angle/10.0)*1.5);
+				a = (Math.PI*0.5) * phi * (double)i;
+				r+=2;
+				int x = (int)(Math.sin(a+angle)*r);
+				int y = (int)(Math.cos(a+angle)*r);
+				bd.setDrawColor(bd.getDistinctColor(i, 0.75f));
+				bd.drawFilledCircle(x+200, y+200, 15);
+			}
+			angle+=0.01;
+			bd.refresh(60);
+			
+			//while (bd.getEllapsedTime()<1000/10) {};
+		}
+	}
+	
+	public void testCard() {
 		BasicDisplay bd = new BasicDisplay(400, 400);
 
 		bd.cls(bd.getDistinctColor(0, 0.25f));
@@ -24,23 +59,6 @@ public class TestBasicDisplay {
 		bd.drawRect(100, 100, 300, 300);
 		bd.refresh();
 
-		//Color cn = Color.HSBtoRGB(hue, 1.0f, 1.0f);
-		
-		/*
-		bd.setDrawColor(Color.black);
-		while (true) {
-			for (int i=0;i<400;i++) {
-				bd.cls(new Color(255,255,0,0));
-				bd.cls(new Color(255,255,0,0));
-				bd.cls(new Color(255,255,0,0));
-				bd.cls(new Color(255,255,0,0));
-				bd.cls(new Color(255,255,0,0));
-				bd.setDrawColor(new Color(Color.HSBtoRGB((float)i/400.0f*1.6180f, 1.0f, 1.0f)));
-				bd.drawLine(0,i,400,i);
-				bd.refresh();
-				
-			}
-		}*/
 	}
 
 }
